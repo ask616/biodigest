@@ -2,22 +2,42 @@
 from flask import Blueprint, request, render_template, \
                   redirect, url_for, session
 from app.forecast.forms import ForecastForm, NumInputsForm
+from model import Model
 import json
 
 forecast = Blueprint('forecast', __name__, url_prefix='/forecast')
 
+waste_types = [
+    "pig_manure_waste",
+    "cassava_waste",
+    "fish_waste_water",
+    "kitchen_food_waste",
+    "municipal_fecal_residue_waste",
+    "tea_waste",
+    "chicken_litter_waste",
+    "bagasse_feed_waste",
+    "alcohol_waste",
+    "chinese_medicine_waste",
+    "energy_grass_waste",
+    "banana_fruit_shafts_waste",
+    "lemon_waste",
+    "percolate_waste",
+    "other_waste" ]
+
+model = Model()
+
 def make_data(form):
     data = []
+    print(form.entries.data)
     for entry in form.entries.data:
-        data.append({
-            "other_waste": float(str(entry["other_waste"])),
-            "kitchen_waste": float(str(entry["kitchen_waste"])),
-            "bread_paste_waste": float(str(entry["bread_paste_waste"])),
-            "diesel_waste_water": float(str(entry["diesel_waste_water"])),
-            "fruit_veg_waste": float(str(entry["fruit_veg_waste"])),
-            "oil_waste": float(str(entry["oil_waste"]))
-        })
+        data.append([float(str(entry[waste_type])) for waste_type in waste_types])
     return data
+
+def get_xs(form):
+    xs = []
+    for entry in form.entries.data:
+        xs.append(str(entry["month"]) + "/" + str(entry["year"]))
+    return xs
 
 @forecast.route('/', methods=['GET', 'POST'])
 def num_inputs():
@@ -36,7 +56,7 @@ def input():
     form = ForecastForm(request.form)
 
     if form.validate_on_submit():
-        session["data"] = json.dumps(make_data(form))
+        session["data"] = json.dumps({ "ys": list(model.predict(model.knn_model, make_data(form))), "xs": get_xs(form) })
         return redirect(url_for("forecast.result"))
     else:
         for i in range(num_inputs):

@@ -1,12 +1,13 @@
-function renderCharts(data) {
+function renderCharts(outData) {
   const ctx = document.getElementById("myChart").getContext('2d');
+  console.log(outData);
   const stackedLine = new Chart(ctx, {
     type: 'line',
     data: {
       datasets: [{
-        data: _.values(data)
+        data: outData.ys
       }],
-      labels: _.keys(data)
+      labels: outData.xs
     },
     options: {
       scales: {
