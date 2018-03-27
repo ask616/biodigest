@@ -10,7 +10,93 @@
   <title>BioDigest Forecasting</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
+<style type="text/css">
+  th {
+    min-width: 90px;
+    max-width: 90px;
+  }
+</style>
 <body>
+
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th scope="col">Pig manure</th>
+        <th scope="col">Cassava</th>
+        <th scope="col">Fish waste water</th>
+        <th scope="col">Kitchen food</th>
+        <th scope="col">Municipal fecal residue</th>
+        <th scope="col">Tea</th>
+        <th scope="col">Chicken litter</th>
+        <th scope="col">Bagasse feed</th>
+        <th scope="col">Alcohol</th>
+        <th scope="col">Chinese medicine</th>
+        <th scope="col">Energy grass</th>
+        <th scope="col">Banana fruit shafts</th>
+        <th scope="col">Lemon</th>
+        <th scope="col">Percolate</th>
+        <th scope="col">Other</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+      </tr>
+
+      <tr>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+      </tr>
+
+       <tr>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+        <td><input type="text" class="form-control form-control-sm" placeholder="0.00"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
   <form method="POST" action="." accept-charset="UTF-8" role="form">
     {{ form.csrf_token }}
     <div class="form-row">

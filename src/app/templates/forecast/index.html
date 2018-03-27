@@ -1,7 +1,7 @@
-{% macro render_field(field, placeholder=None) %}
+{% macro render_field(field, placeholder=None, id=None) %}
   <div>
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
-    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+    {{ field(class=css_class, id=id, placeholder=placeholder, **kwargs) }}
   </div>
 {% endmacro %}
 
@@ -11,11 +11,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+
   <form method="POST" action="." accept-charset="UTF-8" role="form">
     {{ form.csrf_token }}
     <div class="form-row">
       <div class="col-md-12 mb-12">
-        {{ render_field(form.num_inputs, placeholder="", autofocus="") }}
+        Enter number of inputs:
+        {{ render_field(form.num_inputs, placeholder="", id="num-ins", autofocus="") }}
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>

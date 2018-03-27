@@ -7,7 +7,7 @@ import json
 
 forecast = Blueprint('forecast', __name__, url_prefix='/forecast')
 
-waste_types = [
+WASTE_TYPES = [
     "pig_manure_waste",
     "cassava_waste",
     "fish_waste_water",
@@ -27,17 +27,12 @@ waste_types = [
 model = Model()
 
 def make_data(form):
-    data = []
+    xs, ys = [], []
     print(form.entries.data)
     for entry in form.entries.data:
-        data.append([float(str(entry[waste_type])) for waste_type in waste_types])
-    return data
-
-def get_xs(form):
-    xs = []
-    for entry in form.entries.data:
         xs.append(str(entry["month"]) + "/" + str(entry["year"]))
-    return xs
+        ys.append([float(str(entry[waste_type])) for waste_type in WASTE_TYPES])
+    return xs, ys
 
 @forecast.route('/', methods=['GET', 'POST'])
 def num_inputs():
@@ -55,8 +50,11 @@ def input():
 
     form = ForecastForm(request.form)
 
+    print([field for field in form])
+
     if form.validate_on_submit():
-        session["data"] = json.dumps({ "ys": list(model.predict(model.knn_model, make_data(form))), "xs": get_xs(form) })
+        xs, ys = make_data(form)
+        session["data"] = json.dumps({ "xs": xs, "ys": list(model.predict(model.knn_model, ys)) })
         return redirect(url_for("forecast.result"))
     else:
         for i in range(num_inputs):

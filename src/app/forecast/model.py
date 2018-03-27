@@ -2,16 +2,6 @@
 
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn import datasets, linear_model
-from sklearn.metrics import mean_squared_error, r2_score
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-from sklearn.linear_model import perceptron
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsRegressor
 
@@ -21,7 +11,7 @@ class Model:
     self.knn_model = self.knn(processed_data)
 
   def get_data(self):
-    excel = pd.ExcelFile('/Users/areeb/workspace/school/135/biotesseract/ui/biodigest/src/app/forecast/HainanClean_New.xlsx')
+    excel = pd.ExcelFile('app/data/HainanClean_New.xlsx')
     hainan = excel.parse("fulldf")
     hainan.columns = hainan.columns.str.replace('  ', '_')
     hainan.columns = hainan.columns.str.replace(' ', '_')
